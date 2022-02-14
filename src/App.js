@@ -1,14 +1,14 @@
-import { Fragment } from "react/cjs/react.production.min";
+import { Container } from "@mui/material";
 import "./App.css";
 
 import FormularioCadastro from "./components/FormularioCadastro/FormularioCadastro";
 
 function App() {
   return (
-    <Fragment>
+    <Container component="article" maxWidth="sm">
       <h1>Formulário cadastro</h1>
       <FormularioCadastro />
-    </Fragment>
+    </Container>
   );
 }
 
