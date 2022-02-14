@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 
 function FormularioCadastro() {
   return (
@@ -25,11 +25,14 @@ function FormularioCadastro() {
         fullWidth
       />
 
-      <label>Promoções</label>
-      <input type="checkbox" />
-
-      <label>Novidades</label>
-      <input type="checkbox" />
+      <FormControlLabel
+        label="Promoções"
+        control={<Switch name="promocoes" defaultChecked />}
+      />
+      <FormControlLabel
+        label="Novidades"
+        control={<Switch name="novidades" defaultChecked />}
+      />
 
       <Button variant="contained" type="submit">
         Cadastrar
