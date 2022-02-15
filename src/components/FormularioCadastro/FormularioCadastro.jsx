@@ -1,14 +1,26 @@
+import { useState } from "react";
 import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 
 function FormularioCadastro() {
+  let [nome, setNome] = useState("");
+
   return (
-    <form>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        console.log(nome);
+      }}
+    >
       <TextField
+        value={nome}
         id="nome"
         label="Nome"
         variant="outlined"
         margin="normal"
         fullWidth
+        onChange={(e) => {
+          setNome(e.target.value);
+        }}
       />
       <TextField
         id="sobrenome"
