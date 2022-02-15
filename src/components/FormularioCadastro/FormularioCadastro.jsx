@@ -7,6 +7,7 @@ function FormularioCadastro({ onSubmitFormCadastro }) {
   const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(true);
+  const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
 
   return (
     <form
@@ -38,8 +39,21 @@ function FormularioCadastro({ onSubmitFormCadastro }) {
         label="CPF"
         variant="outlined"
         margin="normal"
+        error={!erros.cpf.valido}
+        helperText={erros.cpf.texto}
         fullWidth
         onChange={(e) => setCpf(e.target.value)}
+        onBlur={(e) => {
+          let valido = true;
+          let texto = "";
+          if (cpf.length !== 11) {
+            valido = false;
+            texto = "CPF deve conter 11 dígitos";
+          }
+          setErros({
+            cpf: { valido, texto },
+          });
+        }}
       />
 
       <FormControlLabel
