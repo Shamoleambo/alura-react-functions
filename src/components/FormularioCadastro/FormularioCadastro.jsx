@@ -4,12 +4,15 @@ import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 function FormularioCadastro() {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [promocoes, setPromocoes] = useState(true);
+  const [novidades, setNovidades] = useState(true);
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        console.log(nome, sobrenome);
+        console.log(nome, sobrenome, promocoes, novidades);
       }}
     >
       <TextField
@@ -36,15 +39,30 @@ function FormularioCadastro() {
         variant="outlined"
         margin="normal"
         fullWidth
+        onChange={(e) => {
+          setCpf(e.target.value);
+        }}
       />
 
       <FormControlLabel
         label="Promoções"
-        control={<Switch name="promocoes" defaultChecked />}
+        control={
+          <Switch
+            checked={promocoes}
+            name="promocoes"
+            onChange={(e) => setPromocoes(e.target.checked)}
+          />
+        }
       />
       <FormControlLabel
         label="Novidades"
-        control={<Switch name="novidades" defaultChecked />}
+        control={
+          <Switch
+            checked={novidades}
+            name="novidades"
+            onClick={() => setNovidades(() => !novidades)}
+          />
+        }
       />
 
       <Button variant="contained" type="submit">
