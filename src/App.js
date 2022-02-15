@@ -10,13 +10,27 @@ function App() {
       <Typography variant="h3" component="h1" align="center">
         Formulário cadastro
       </Typography>
-      <FormularioCadastro onSubmitFormCadastro={onSubmitForm} />
+      <FormularioCadastro
+        onSubmitForm={onSubmitFormCadastro}
+        validarCpfForm={validarCpfFormCadastro}
+      />
     </Container>
   );
 }
 
-const onSubmitForm = (dados) => {
+const onSubmitFormCadastro = (dados) => {
   console.log(dados);
+};
+
+const validarCpfFormCadastro = (cpf) => {
+  let valido = true;
+  let texto = "";
+  if (cpf.length !== 11) {
+    valido = false;
+    texto = "CPF deve conter 11 dígitos";
+  }
+
+  return { cpf: { valido, texto } };
 };
 
 export default App;

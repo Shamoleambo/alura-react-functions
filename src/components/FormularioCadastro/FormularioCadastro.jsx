@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 
-function FormularioCadastro({ onSubmitFormCadastro }) {
+function FormularioCadastro({ onSubmitForm, validarCpfForm }) {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -13,7 +13,7 @@ function FormularioCadastro({ onSubmitFormCadastro }) {
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSubmitFormCadastro({ nome, sobrenome, cpf, promocoes, novidades });
+        onSubmitForm({ nome, sobrenome, cpf, promocoes, novidades });
       }}
     >
       <TextField
@@ -44,15 +44,7 @@ function FormularioCadastro({ onSubmitFormCadastro }) {
         fullWidth
         onChange={(e) => setCpf(e.target.value)}
         onBlur={(e) => {
-          let valido = true;
-          let texto = "";
-          if (cpf.length !== 11) {
-            valido = false;
-            texto = "CPF deve conter 11 dígitos";
-          }
-          setErros({
-            cpf: { valido, texto },
-          });
+          setErros(validarCpfForm(e.target.value));
         }}
       />
 
