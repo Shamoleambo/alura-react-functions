@@ -10,9 +10,13 @@ function App() {
       <Typography variant="h3" component="h1" align="center">
         Formulário cadastro
       </Typography>
-      <FormularioCadastro />
+      <FormularioCadastro onSubmitFormCadastro={onSubmitForm} />
     </Container>
   );
 }
+
+const onSubmitForm = (dados) => {
+  console.log(dados);
+};
 
 export default App;
