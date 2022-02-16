@@ -70,7 +70,7 @@ function DadosPessoais({ onSubmitForm, validarCpfForm }) {
       />
 
       <Button variant="contained" type="submit">
-        Cadastrar
+        Próximo
       </Button>
     </form>
   );

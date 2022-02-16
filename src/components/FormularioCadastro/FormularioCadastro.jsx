@@ -1,5 +1,6 @@
 import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
+import DadosEntrega from "./DadosEntrega";
 
 function FormularioCadastro({ onSubmitForm, validarCpfForm }) {
   return (
@@ -9,6 +10,7 @@ function FormularioCadastro({ onSubmitForm, validarCpfForm }) {
         validarCpfForm={validarCpfForm}
       />
       <DadosUsuario />
+      <DadosEntrega />
     </>
   );
 }

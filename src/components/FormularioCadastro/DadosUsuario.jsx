@@ -20,7 +20,7 @@ function DadosUsuario() {
         fullWidth
       />
       <Button type="submit" variant="contained">
-        Cadastrar
+        Próximo
       </Button>
     </form>
   );
