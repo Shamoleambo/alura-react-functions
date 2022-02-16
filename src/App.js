@@ -10,17 +10,10 @@ function App() {
       <Typography variant="h3" component="h1" align="center">
         Formulário cadastro
       </Typography>
-      <FormularioCadastro
-        onSubmitForm={onSubmitFormCadastro}
-        validarCpfForm={validarCpfFormCadastro}
-      />
+      <FormularioCadastro validarCpfForm={validarCpfFormCadastro} />
     </Container>
   );
 }
-
-const onSubmitFormCadastro = (dados) => {
-  console.log(dados);
-};
 
 const validarCpfFormCadastro = (cpf) => {
   let valido = true;

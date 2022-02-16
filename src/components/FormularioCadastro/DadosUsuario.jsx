@@ -1,12 +1,13 @@
 import { TextField, Button } from "@mui/material";
 
-function DadosUsuario() {
+function DadosUsuario({ onSubmit }) {
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <TextField
         id="email"
         label="email"
         type="email"
+        required
         variant="outlined"
         margin="normal"
         fullWidth
@@ -15,11 +16,12 @@ function DadosUsuario() {
         id="senha"
         label="senha"
         type="password"
+        required
         variant="outlined"
         margin="normal"
         fullWidth
       />
-      <Button type="submit" variant="contained">
+      <Button value="proximo" type="submit" variant="contained">
         Próximo
       </Button>
     </form>
