@@ -4,14 +4,12 @@ import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
 
-import { Typography } from "@mui/material";
-
 function FormularioCadastro({ onSubmit, validarCpfForm }) {
   let [etapa, setEtapa] = useState(0);
 
   const formularios = [
-    <DadosUsuario onSubmit={controlarEtapa} />,
-    <DadosPessoais validarCpfForm={validarCpfForm} onSubmit={controlarEtapa} />,
+    <DadosUsuario onSubmit={onSubmit} />,
+    <DadosPessoais validarCpfForm={validarCpfForm} onSubmit={onSubmit} />,
     <DadosEntrega onSubmit={onSubmit} />,
   ];
 

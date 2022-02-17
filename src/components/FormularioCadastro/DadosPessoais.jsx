@@ -10,7 +10,12 @@ function DadosPessoais({ onSubmit, validarCpfForm }) {
   const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
 
   return (
-    <form onSubmit={onSubmit}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit({ nome, sobrenome, cpf, promocoes, novidades });
+      }}
+    >
       <TextField
         id="nome"
         label="Nome"
