@@ -6,32 +6,20 @@ import DadosEntrega from "./DadosEntrega";
 
 import { Typography } from "@mui/material";
 
-function FormularioCadastro({ validarCpfForm }) {
+function FormularioCadastro({ onSubmit, validarCpfForm }) {
   let [etapa, setEtapa] = useState(0);
+
+  const formularios = [
+    <DadosUsuario onSubmit={controlarEtapa} />,
+    <DadosPessoais validarCpfForm={validarCpfForm} onSubmit={controlarEtapa} />,
+    <DadosEntrega onSubmit={onSubmit} />,
+  ];
 
   function controlarEtapa() {
     setEtapa(() => ++etapa);
   }
 
-  function formularioAtual(etapa) {
-    switch (etapa) {
-      case 0:
-        return <DadosUsuario onSubmit={controlarEtapa} />;
-      case 1:
-        return (
-          <DadosPessoais
-            validarCpfForm={validarCpfForm}
-            onSubmit={controlarEtapa}
-          />
-        );
-      case 2:
-        return <DadosEntrega onSubmit />;
-      default:
-        return <Typography>Erro ao selecionar formulário</Typography>;
-    }
-  }
-
-  return <>{formularioAtual(etapa)}</>;
+  return <>{formularios[etapa]}</>;
 }
 
 export default FormularioCadastro;

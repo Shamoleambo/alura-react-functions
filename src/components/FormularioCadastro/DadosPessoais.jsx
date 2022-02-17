@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 
-function DadosPessoais({ onSubmitForm, validarCpfForm }) {
+function DadosPessoais({ onSubmit, validarCpfForm }) {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
@@ -10,12 +10,7 @@ function DadosPessoais({ onSubmitForm, validarCpfForm }) {
   const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSubmitForm({ nome, sobrenome, cpf, promocoes, novidades });
-      }}
-    >
+    <form onSubmit={onSubmit}>
       <TextField
         id="nome"
         label="Nome"
