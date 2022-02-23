@@ -1,13 +1,20 @@
 import { useState } from "react";
 import { Button, TextField, FormControlLabel, Switch } from "@mui/material";
 
-function DadosPessoais({ onSubmit, validarCpfForm }) {
+function DadosPessoais({ onSubmit, validacoes }) {
   const [nome, setNome] = useState("");
   const [sobrenome, setSobrenome] = useState("");
   const [cpf, setCpf] = useState("");
   const [promocoes, setPromocoes] = useState(true);
   const [novidades, setNovidades] = useState(true);
   const [erros, setErros] = useState({ cpf: { valido: true, texto: "" } });
+
+  function validarCampos(event) {
+    const { name, value } = event.target;
+    const novoEstado = { ...erros };
+    novoEstado[name] = validacoes[name](value);
+    setErros(novoEstado);
+  }
 
   return (
     <form
@@ -36,6 +43,7 @@ function DadosPessoais({ onSubmit, validarCpfForm }) {
       />
       <TextField
         id="cpf"
+        name="cpf"
         label="CPF"
         variant="outlined"
         margin="normal"
@@ -43,9 +51,7 @@ function DadosPessoais({ onSubmit, validarCpfForm }) {
         helperText={erros.cpf.texto}
         fullWidth
         onChange={(e) => setCpf(e.target.value)}
-        onBlur={(e) => {
-          setErros(validarCpfForm(e.target.value));
-        }}
+        onBlur={validarCampos}
       />
 
       <FormControlLabel

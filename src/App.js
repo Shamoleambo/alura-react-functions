@@ -3,6 +3,7 @@ import "./App.css";
 import "@fontsource/roboto/300.css";
 
 import FormularioCadastro from "./components/FormularioCadastro/FormularioCadastro";
+import { validarCPF, validarSenha } from "./models/cadastro";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       </Typography>
       <FormularioCadastro
         onSubmit={onSubmitForm}
-        validarCpfForm={validarCpfFormCadastro}
+        validacoes={{ cpf: validarCPF, senha: validarSenha }}
       />
     </Container>
   );
@@ -20,17 +21,6 @@ function App() {
 
 const onSubmitForm = (dados) => {
   console.log(dados);
-};
-
-const validarCpfFormCadastro = (cpf) => {
-  let valido = true;
-  let texto = "";
-  if (cpf.length !== 11) {
-    valido = false;
-    texto = "CPF deve conter 11 dígitos";
-  }
-
-  return { cpf: { valido, texto } };
 };
 
 export default App;
