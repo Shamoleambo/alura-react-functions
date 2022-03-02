@@ -25,6 +25,7 @@ function DadosPessoais({ onSubmit, validacoes }) {
     >
       <TextField
         id="nome"
+        name="nome"
         label="Nome"
         variant="outlined"
         margin="normal"
@@ -34,6 +35,7 @@ function DadosPessoais({ onSubmit, validacoes }) {
       />
       <TextField
         id="sobrenome"
+        name="sobrenome"
         label="Sobrenome"
         variant="outlined"
         margin="normal"
@@ -56,6 +58,7 @@ function DadosPessoais({ onSubmit, validacoes }) {
 
       <FormControlLabel
         label="Promoções"
+        name="promocoes"
         control={
           <Switch
             checked={promocoes}

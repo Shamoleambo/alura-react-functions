@@ -12,7 +12,7 @@ function App() {
         Formulário cadastro
       </Typography>
       <FormularioCadastro
-        onSubmit={onSubmitForm}
+        aoEnviar={onSubmitForm}
         validacoes={{ cpf: validarCPF, senha: validarSenha }}
       />
     </Container>

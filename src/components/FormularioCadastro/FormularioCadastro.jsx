@@ -6,20 +6,20 @@ import DadosPessoais from "./DadosPessoais";
 import DadosUsuario from "./DadosUsuario";
 import DadosEntrega from "./DadosEntrega";
 
-function FormularioCadastro({ onSubmit, validacoes }) {
+function FormularioCadastro({ aoEnviar, validacoes }) {
   const [etapa, setEtapa] = useState(0);
   const [dados, setDados] = useState({});
 
   useEffect(() => {
     if (etapa === formularios.length - 1) {
-      onSubmit(dados);
+      aoEnviar(dados);
     }
   });
 
   const formularios = [
-    <DadosUsuario validacoes={validacoes} onSubmit={controlarDados} />,
-    <DadosPessoais validacoes={validacoes} onSubmit={controlarDados} />,
-    <DadosEntrega validacoes={validacoes} onSubmit={controlarDados} />,
+    <DadosUsuario validacoes={validacoes} aoEnviar={controlarDados} />,
+    <DadosPessoais validacoes={validacoes} aoEnviar={controlarDados} />,
+    <DadosEntrega validacoes={validacoes} aoEnviar={controlarDados} />,
     <Typography variant="h5">Obrigado pelo Cadastro</Typography>,
   ];
 
